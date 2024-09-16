@@ -6,6 +6,7 @@ Project Overview:
 The website will provide users with a 7-day weather forecast based on their input location.
 Data will be fetched from the weather.gov API, parsed, and displayed dynamically on the page.
 The site will include basic error handling and a responsive design suitable for various devices.
+
 Key Features:
 Display Forecast Data:
 Show the 7-day weather forecast, including the day of the week, temperature (high and low), weather conditions (e.g., sunny, cloudy, rainy), and an icon representing the weather.
@@ -23,6 +24,7 @@ API: Use the weather.gov API to get weather forecast data.
 Weather.gov API:
 Obtain access to the weather.gov API by reading their documentation for endpoints and response structures.
 The primary endpoint will be used to fetch the forecast based on the latitude and longitude of the user's location.
+
 Functionality:
 Fetch the 7-day weather forecast data using the Fetch API.
 Parse and display the data, including dates, temperatures, weather descriptions, and icons.
