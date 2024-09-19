@@ -7,6 +7,22 @@
     <link rel="stylesheet" href="./css/style.css" />
     <title>Weather API Project</title>
   </head>
-  <body></body>
+  <body>
+   <div class="container text-center mt-5">
+      <!-- Weather Display -->
+      <div id="weatherDisplay" class="weatherContainer">
+        <h1 id="cityName">City Name</h1>
+        <p id="weatherCondition">Weather Condition</p>
+        <h2 id="currentTemperature">--°F</h2>
+        <p>Pressure: <span id="pressure">--</span> | Humidity: <span id="humidity">--</span></p>
+        
+        <!-- Hourly Forecast -->
+        <div id="hourlyForecast" class="d-flex justify-content-around mt-4"></div>
+
+        <!-- 7-Day Forecast -->
+        <div id="sevenDayForecast" class="row mt-4"></div>
+      </div>
+    </div>
+  </body>
   <script type="text/javascript" src="./js/app.js"></script>
 </html>
