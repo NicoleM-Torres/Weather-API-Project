@@ -1,16 +1,15 @@
-// WAIT FOR THE DOCUMENT TO FULLY LOAD BEFORE EXECUTING THE SCRIPT
 document.addEventListener("DOMContentLoaded", () => {
   // SET THE DEFAULT CITY TO GAUTIER, MISSISSIPPI
   const defaultCity = "Gautier, Mississippi";
   const latitude = 30.4057; // LATITUDE FOR GAUTIER, MS
   const longitude = -88.5853; // LONGITUDE FOR GAUTIER, MS
 
-  // FETCH WEATHER DATA USING THE COORDINATES FOR THE DEFAULT CITY
-  getWeatherByCoordinates(latitude, longitude, defaultCity);
+  // FETCH GRID POINT INFORMATION USING THE COORDINATES FOR THE DEFAULT CITY
+  getGridPointInfo(latitude, longitude, defaultCity);
 });
 
-// FUNCTION TO FETCH WEATHER DATA BASED ON LATITUDE AND LONGITUDE
-function getWeatherByCoordinates(lat, lon, location) {
+// FUNCTION TO FETCH GRID POINT INFORMATION BASED ON LATITUDE AND LONGITUDE
+function getGridPointInfo(lat, lon, location) {
   // FETCH GRID POINT INFORMATION FROM THE NATIONAL WEATHER SERVICE API
   fetch(`https://api.weather.gov/points/${lat},${lon}`)
     .then((response) => response.json()) // CONVERT RESPONSE TO JSON
@@ -45,6 +44,24 @@ function displayWeatherInfo(forecastData, location) {
     "currentTemperature"
   ).textContent = `${today.temperature}°${today.temperatureUnit}`;
 
+  // DISPLAY PRESSURE AND HUMIDITY
+  // Ensure that pressure and dewPoint exist in the response
+  document.getElementById("pressure").textContent = today.pressure
+    ? `${today.pressure} ${today.pressureUnit}`
+    : "Not available";
+  document.getElementById("humidity").textContent = today.dewPoint
+    ? `${today.dewPoint}°F`
+    : "Not available"; // Dew Point as a proxy for humidity
+
+  // DISPLAY HIGH AND LOW TEMPERATURES
+  // Ensure that temperatureHigh and temperatureLow exist in the response
+  document.getElementById("highTemperature").textContent = today.temperatureHigh
+    ? `${today.temperatureHigh}°${today.temperatureUnit}`
+    : "Not available";
+  document.getElementById("lowTemperature").textContent = today.temperatureLow
+    ? `${today.temperatureLow}°${today.temperatureUnit}`
+    : "Not available";
+
   // DISPLAY THE 7-DAY FORECAST
   displaySevenDayForecast(nextDays);
 }
@@ -61,7 +78,16 @@ function displaySevenDayForecast(daysData) {
         <h5>${new Date(day.startTime).toLocaleDateString("en-US", {
           weekday: "long",
         })}</h5>
-        <p>${day.temperature}°${day.temperatureUnit}</p>
+        <p>High: ${
+          day.temperatureHigh
+            ? `${day.temperatureHigh}°${day.temperatureUnit}`
+            : "Not available"
+        }</p>
+        <p>Low: ${
+          day.temperatureLow
+            ? `${day.temperatureLow}°${day.temperatureUnit}`
+            : "Not available"
+        }</p>
         <p>${day.shortForecast}</p>
         <img src="${day.icon}" alt="${day.shortForecast}">
       </div>`;
