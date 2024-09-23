@@ -8,8 +8,8 @@
     <title>Weather API Project</title>
   </head>
   <body>
-    <div class="container text-center mt-5">
-      <!-- Weather Display -->
+    <div class="mainContainer container text-center mt-5">
+      <!-- WEATHER DISPLAY -->
       <div id="weatherDisplay" class="weatherContainer">
         <h1 id="cityName">City Name</h1>
         <p id="weatherCondition">Weather Condition</p>
@@ -18,11 +18,13 @@
           Pressure: <span id="pressure">--</span> | Humidity:
           <span id="humidity">--</span>
         </p>
+        <!-- DISPLAY DAILY TEMPS -->
         <p>
           High Temperature: <span id="highTemperature">--</span> | Low
-          Temperature: <span id="lowTemperature">--</span>
+          Temperature:
+          <span id="lowTemperature">--</span>
         </p>
-        <!-- 7-Day Forecast -->
+        <!-- WEEKLY FORECAST -->
         <div id="sevenDayForecast" class="row mt-4"></div>
       </div>
     </div>
