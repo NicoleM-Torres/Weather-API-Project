@@ -76,7 +76,7 @@ function displayWeatherInfo(forecastData, location) {
   const highTemperature = Math.max(...todayTemps.map(period => period.temperature));
   const lowTemperature = Math.min(...todayTemps.map(period => period.temperature));
 
-  // Update high and low temperature in the UI
+  // Update high and low temperature
   document.getElementById("highTemperature").textContent = `${highTemperature}°F`;
   document.getElementById("lowTemperature").textContent = `${lowTemperature}°F`;
 
