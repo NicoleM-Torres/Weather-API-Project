@@ -1,6 +1,6 @@
 body {
   background: linear-gradient(135deg, #93b3cf 0%, #5277a5 100%);
-  height: 200px;
+  /* height: 200px; */
 }
 
 .weatherContainer {
